@@ -1,0 +1,52 @@
+.welcome__title{
+    font-weight: 600;
+    font-size: 68px;
+    line-height: 69.7px;
+    font-family: "montserrat";
+}
+
+.welcome__text{
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 27px;
+    width: 400px;
+    margin-bottom: 24px;
+    font-family: "montserrat-medium";
+}
+
+.welcome__inf{
+    gap: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 620px;
+    margin-right: 50px;
+}
+
+.welcome__sign {
+    font-family: 'montserrat-medium';
+    font-size: 20px;
+}
+
+.welcome__img{
+    width: 700px;
+    height: 360px;
+}
+
+.welcome__img img{
+    width: 700px;
+    height: auto;
+}
+
+.welcome__container{
+    display: flex;
+    align-items: center;
+    padding-top: 42px;
+    padding-bottom: 42px;
+    justify-content: center;
+    border-top: 1px solid black;
+    margin: 0 auto;
+    margin-top: 20px;
+    max-width: 1400px;
+    margin-bottom: 50px;
+}

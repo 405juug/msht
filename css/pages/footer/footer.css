@@ -1,0 +1,38 @@
+.footer {
+    background-color: var(--gray);
+}
+
+.footer__container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 30px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.contact__container{
+    margin-bottom: 20px;
+}
+
+.contact__phone{
+    font-family: 'montserrat-regular';
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.contact__email{
+    font-family: 'montserrat-regular';
+    font-size: 20px;
+}
+
+.contact__title{
+    font-family: 'montserrat-bold';
+    margin-bottom: 20px;
+}
+
+.rights__text{
+    font-family: 'montserrat-semibold';
+    font-size: 20px;
+}
+
+

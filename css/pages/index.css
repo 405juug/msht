@@ -1,0 +1,11 @@
+@import url(header/header.css);
+@import url(common.css);
+@import url(welcome/welcome.css);
+@import url(services/services.css);
+@import url(main/main.css);
+@import url(footer/footer.css);
+@import url(about/about.css);
+@import url(registration/reg.css);
+@import url(order/order.css);
+@import url(login/login.css);
+@import url(ser/ser.css);
