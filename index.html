@@ -200,8 +200,7 @@
             const email = emailInput.value.trim();
             const password = passwordInput.value.trim();
             let users = getUsers();
-            const passwordConfirm = passwordConfirmInput;
-
+            const passwordConfirm = passwordConfirmInput.value.trim();      
 
             if (isLogin) {
                 const user = users.find(u => u.email === email && u.password === password);
