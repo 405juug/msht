@@ -1,70 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/globals/index.css">
-    <link rel="stylesheet" href="css/pages/index.css">
-    <title>Чистый Дом | Регистрация</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login / Register</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #3a3a3a;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			margin: 0;
+		}
+
+		.login-container {
+			background: #fff;
+			width: 350px;
+			border-radius: 16px;
+			padding: 20px;
+			box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+			position: relative;
+		}
+
+		.close-btn {
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			font-size: 35px;
+			color: #666;
+			cursor: pointer;
+		}
+
+		.login-header {
+			text-align: center;
+			padding-bottom: 15px;
+			border-bottom: 1px solid #eee;
+		}
+
+		.login-header .icon {
+			background: #f3f3f3;
+			width: 50px;
+			height: 50px;
+			border-radius: 12px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 0 auto 10px;
+			font-size: 22px;
+			color: #6a4ce2;
+		}
+
+		.login-header h2 {
+			margin: 0;
+			font-size: 18px;
+			font-weight: bold;
+		}
+
+		.login-header p {
+			margin: 5px 0 0;
+			color: #666;
+			font-size: 14px;
+		}
+
+		.form-group {
+			margin-top: 15px;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.form-group label {
+			font-size: 14px;
+			margin-bottom: 5px;
+		}
+
+		.form-group input {
+			padding: 10px;
+			border: 1px solid #ddd;
+			border-radius: 8px;
+			font-size: 14px;
+		}
+
+		.options {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin: 10px 0 20px;
+			font-size: 14px;
+		}
+
+		.options label {
+			display: flex;
+			align-items: center;
+			gap: 5px;
+		}
+
+		.options a {
+			color: #6a4ce2;
+			text-decoration: none;
+		}
+
+		.btn-confirm {
+			background: #6a4ce2;
+			border: none;
+			color: #fff;
+			width: 100%;
+			padding: 12px;
+			border-radius: 8px;
+			font-size: 16px;
+			font-weight: bold;
+			cursor: pointer;
+		}
+
+		.btn-cancel {
+			margin-top: 10px;
+			background: #f3f3f3;
+			border: none;
+			color: #333;
+			width: 100%;
+			padding: 12px;
+			border-radius: 8px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+
+		.switch {
+			margin-top: 15px;
+			text-align: center;
+			font-size: 14px;
+		}
+		.switch a {
+			color: #6a4ce2;
+			cursor: pointer;
+		}
+	</style>
 </head>
 <body>
-    <div class="wrapper">
-        <header class="header">
-            <div class="header__container">
-                <div class="header__logobox">
-                <a href="index.html"><img class="header__logo" src="images/header/5880208.png"></a>
-                <h2 class="header__title">Чистый дом</h2>
-                </div>
-                <nav class="header__menu menu">
-                    <ul class="menu__list">
-                        <li class="menu__item"><a href="index.html" class="menu__link">Главная</a></li>
-                        <li class="menu__item"><a href="take_order.html" class="menu__link">Оставить заявку</a></li>
-                        <li class="menu__item"><a href="service.html" class="menu__link">Услуги</a></li>
-                        <li class="menu__item"><a href="registration.html" class="menu__link">Регистрация</a></li>
-                        <li class="menu__item"><a href="login.html" class="menu__link">Вход</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
 
-        <main class="main">
-            <div class="regform__container">
-                <form action="#" class="reg__form">
-                    <h1 class="regform__title">Регистрация</h1>
-                    <label for="text" class="regform__label">Имя</label>
-                    <input type="text" name="text" id="text" class="regform__input">
-            
-                    <label for="email" class="regform__label">Электронная почта</label>
-                    <input type="email" name="email" id="email" class="regform__input">
-            
-                    <label for="pass" class="regform__label">Пароль</label>
-                    <input type="password" name="pass" id="pass" class="regform__input">
-            
-                    <label for="passpass" class="regform__label">Подтверждение пароля</label>
-                    <input type="password" name="passpass" id="passpass" class="regform__input">
-            
-                    <button type="submit" class="regform__button">Зарегистрироваться</button>
-                </form>
-            </div>
-        </main>
+<div class="login-container">
+	<div class="close-btn">&times;</div>
 
-        <footer class="footer">
-            <div class="footer__container">
-                <section id="contact">
-                    <div class="contact__container">
-                        <h2 class="contact__title">Контакты</h2>
-                        <p class="contact__phone">Позвоните нам: <a href="tel:+79001231231" class="contact__link">+7 (900) 123-12-31</a></p>
-                        <p class="contact__email">Напишите нам: <a href="mailto:info@чистыйдом.рф" class="contact__link">info@чистыйдом.рф</a></p>
-                    </div>
-                </section>
+	<div class="login-header">
+		<div class="icon">🔐</div>
+		<h2 id="form-title">Log in to your account</h2>
+		<p id="form-subtitle">Welcome back! Please enter your details.</p>
+	</div>
 
-                <section class="rights">
-                    <div class="rights__container">
-                        <p class="rights__text">&copy; 2024 Чистый Дом. Все права защищены.</p>
-                    </div>
-                </section>
-            </div>
-        </footer>
-    </div>
+	<form id="authForm">
+		<div class="form-group">
+			<label>Email</label>
+			<input type="email" id="email" placeholder="Enter your email" required>
+		</div>
+
+		<div class="form-group">
+			<label>Password</label>
+			<input type="password" id="password" placeholder="••••••••" required>
+		</div>
+
+		<div class="options">
+			<label><input type="checkbox"> Remember for 30 days</label>
+			<a href="#">Forgot password</a>
+		</div>
+
+		<button type="submit" class="btn-confirm" id="mainBtn">Login</button>
+		<button type="button" class="btn-cancel">Cancel</button>
+	</form>
+
+	<div class="switch">
+		<span id="switchText">Don't have an account? <a id="switchLink">Register</a></span>
+	</div>
+</div>
+
+<script>
+	const form = document.getElementById("authForm");
+	const emailInput = document.getElementById("email");
+	const passwordInput = document.getElementById("password");
+	const formTitle = document.getElementById("form-title");
+	const formSubtitle = document.getElementById("form-subtitle");
+	const mainBtn = document.getElementById("mainBtn");
+	const switchText = document.getElementById("switchText");
+	const switchLink = document.getElementById("switchLink");
+
+	let isLogin = true;
+
+	function setFormMode(loginMode) {
+		isLogin = loginMode;
+		if (isLogin) {
+			formTitle.textContent = "Log in to your account";
+			formSubtitle.textContent = "Welcome back! Please enter your details.";
+			mainBtn.textContent = "Login";
+			switchText.innerHTML = `Don't have an account? <a id="switchLink">Register</a>`;
+		} else {
+			formTitle.textContent = "Create an account";
+			formSubtitle.textContent = "Please enter your details to register.";
+			mainBtn.textContent = "Register";
+			switchText.innerHTML = `Already have an account? <a id="switchLink">Login</a>`;
+		}
+	}
+		document.getElementById("switchLink").addEventListener("click", () => {
+			setFormMode(!isLogin);
+	});
+
+	switchText.addEventListener("click", (e) => {
+		if (e.target && e.target.id === "switchLink") {
+			e.preventDefault();
+			setFormMode(!isLogin);
+		}
+	});
+
+	const params = new URLSearchParams(window.location.search);
+	setFormMode(!params.has("register") ? true : false);
+
+
+	function getUsers() {
+		return JSON.parse(localStorage.getItem("users")) || [];
+	}
+
+	function saveUsers(users) {
+		localStorage.setItem("users", JSON.stringify(users));
+	}
+
+	form.addEventListener("submit", (e) => {
+		e.preventDefault();
+		const email = emailInput.value.trim();
+		const password = passwordInput.value.trim();
+		let users = getUsers();
+
+		if (isLogin) {
+			const user = users.find(u => u.email === email && u.password === password);
+			if (user) {
+				alert("✅ Login successful!");
+				window.location.href = "index.html";
+			} else {
+				alert("❌ Incorrect email or password!");
+			}
+		} else {
+			const exists = users.some(u => u.email === email);
+			if (exists) {
+				alert("⚠️ User with this email already exists!");
+			} else {
+				users.push({ email, password });
+				saveUsers(users);
+				alert("🎉 Registration successful! Now you can log in.");
+				isLogin = true;
+				formTitle.textContent = "Log in to your account";
+				formSubtitle.textContent = "Welcome back! Please enter your details.";
+				mainBtn.textContent = "Login";
+				switchText.innerHTML = `Don't have an account? <a id="switchLink">Register</a>`;
+			}
+		}
+	});
+</script>
+
 </body>
 </html>
