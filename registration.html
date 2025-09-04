@@ -153,13 +153,20 @@
 			<input type="email" id="email" placeholder="Enter your email" required>
 		</div>
 
-		<div class="form-group">
+        <div class="form-group">
 			<label>Password</label>
 			<input type="password" id="password" placeholder="••••••••" required>
 		</div>
+        
+		<div class="form-group" id="passwordConfirmGroup" style="display: none;">
+			<label>Confirm Password</label>
+			<input type="password" id="passwordConfirm" placeholder="Confirm password">
+		</div>
 
 		<div class="options">
-			<label><input type="checkbox"> Remember for 30 days</label>
+			<label>
+                <input type="checkbox" id="showPassword"> Show password
+            </label>
 			<a href="#">Forgot password</a>
 		</div>
 
@@ -176,11 +183,24 @@
 	const form = document.getElementById("authForm");
 	const emailInput = document.getElementById("email");
 	const passwordInput = document.getElementById("password");
+    const passwordConfirmInput = document.getElementById("passwordConfirm");
+    const passwordConfirmGroup = document.getElementById("passwordConfirmGroup");
+    const showPassword = document.getElementById("showPassword");
 	const formTitle = document.getElementById("form-title");
 	const formSubtitle = document.getElementById("form-subtitle");
 	const mainBtn = document.getElementById("mainBtn");
 	const switchText = document.getElementById("switchText");
 	const switchLink = document.getElementById("switchLink");
+
+    showPassword.addEventListener("change", () => {
+        if(showPassword.checked){
+            passwordInput.type = "text"
+            passwordConfirmInput.type = "text"
+        } else{
+            passwordInput.type = "password"
+            passwordConfirmInput.type = "password"
+        }
+    })
 
 	let isLogin = true;
 
@@ -191,11 +211,13 @@
 			formSubtitle.textContent = "Welcome back! Please enter your details.";
 			mainBtn.textContent = "Login";
 			switchText.innerHTML = `Don't have an account? <a id="switchLink">Register</a>`;
+            passwordConfirmGroup.style.display = "none";
 		} else {
 			formTitle.textContent = "Create an account";
 			formSubtitle.textContent = "Please enter your details to register.";
 			mainBtn.textContent = "Register";
 			switchText.innerHTML = `Already have an account? <a id="switchLink">Login</a>`;
+            passwordConfirmGroup.style.display = "flex";
 		}
 	}
 		document.getElementById("switchLink").addEventListener("click", () => {
