@@ -1,0 +1,160 @@
+/* Оверлей */
+.modal {
+    display: none; /* скрыта по умолчанию */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); /* затемнение */
+    backdrop-filter: blur(5px); /* блюр фона */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+/* Контент модалки */
+.modal-content {
+    background: #fff;
+    width: 350px;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    position: relative;
+    animation: fadeIn 0.3s ease;
+}
+
+/* крестик */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 35px;
+    color: #666;
+    cursor: pointer;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.login-container {
+    background: #fff;
+    width: 350px;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 35px;
+    color: #666;
+    cursor: pointer;
+}
+
+.login-header {
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.login-header .icon {
+    background: #f3f3f3;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    font-size: 22px;
+    color: #6a4ce2;
+}
+
+.login-header h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.login-header p {
+    margin: 5px 0 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.form-group {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0 20px;
+    font-size: 14px;
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.options a {
+    color: #6a4ce2;
+    text-decoration: none;
+}
+
+.btn-confirm {
+    background: #6a4ce2;
+    border: none;
+    color: #fff;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    margin-top: 10px;
+    background: #f3f3f3;
+    border: none;
+    color: #333;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.switch {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+.switch a {
+    color: #6a4ce2;
+    cursor: pointer;
+}
