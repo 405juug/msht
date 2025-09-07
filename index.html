@@ -200,7 +200,7 @@
             const email = emailInput.value.trim();
             const password = passwordInput.value.trim();
             let users = getUsers();
-            const passwordConfirm = passwordConfirmInput.value.trim();      
+            const passwordConfirm = passwordConfirmInput.value.trim();
 
             if (isLogin) {
                 const user = users.find(u => u.email === email && u.password === password);
@@ -215,13 +215,13 @@
                 if (exists) {
                     alert("⚠️ User with this email already exists!");
                     return;
-                } 
+                }
 
                 if(!passwordConfirm){
                     alert("⚠️ Please confirm your password!")
                     return;
                 }
-                
+
                 if(password !== passwordConfirm){
                     alert("Passwords don't match!");
                     return;
@@ -237,7 +237,6 @@
         const closeBtn = document.querySelector(".close-btn");
         const cancelBtn = document.querySelector(".btn-cancel");
 
-        // Открытие по клику на ссылку "Вход"
         document.querySelectorAll(".menu__link").forEach(link => {
             if (link.textContent.trim() === "Вход") {
                 link.addEventListener("click", (e) => {
@@ -247,15 +246,40 @@
             }
         });
 
-        // Закрытие (крестик и Cancel)
         closeBtn.addEventListener("click", () => modal.style.display = "none");
         cancelBtn.addEventListener("click", () => modal.style.display = "none");
 
-        // Клик вне окна тоже закрывает
         window.addEventListener("click", (e) => {
             if (e.target === modal) {
                 modal.style.display = "none";
             }
+        });
+        register.addEventListener("click", async (e) => {
+            e.preventDefault();
+            let emailValue = email.value;
+            let loginValue = login.value;
+            let passwordValue = password.value;
+            let passwordConfirmValue = passwordConfirm.value;
+            if (emailValue.loginValue == 0 || loginValue == 0 || passwordValue == 0 || passwordConfirmValue == 0) {
+                alert("Заполните все поля");
+            }
+            if (passwordValue != passwordConfirmValue) {
+                alert("Пароли не совпадают");
+            }
+            let data = {
+                login: loginValue,
+                email: emailValue,
+                password: passwordValue,
+            };
+            let response = await fetch("http://92.255.79.122:9998/api/v1/auth/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+            let result = await response.json();
+            console.log(result);
         });
     </script>
 </body>
