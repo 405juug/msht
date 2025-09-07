@@ -142,19 +142,13 @@
         const formSubtitle = document.getElementById("form-subtitle");
         const mainBtn = document.getElementById("mainBtn");
         const switchText = document.getElementById("switchText");
-        const switchLink = document.getElementById("switchLink");
-
-        showPass.addEventListener("change", () => {
-            if(showPass.checked){
-                passwordInput.type = "text"
-                passwordConfirmInput.type = "text"
-            } else{
-                passwordInput.type = "password"
-                passwordConfirmInput.type = "password"
-            }
-        })
 
         let isLogin = true;
+
+        showPass.addEventListener("change", () => {
+            passwordInput.type = showPass.checked ? "text" : "password";
+            passwordConfirmInput.type = showPass.checked ? "text" : "password";
+        });
 
         function setFormMode(loginMode) {
             isLogin = loginMode;
@@ -171,68 +165,95 @@
                 switchText.innerHTML = `Already have an account? <a id="switchLink">Login</a>`;
                 passwordConfirmGroup.style.display = "flex";
             }
+            attachSwitchLink();
         }
-        document.getElementById("switchLink").addEventListener("click", () => {
-            setFormMode(!isLogin);
-        });
 
-        switchText.addEventListener("click", (e) => {
-            if (e.target && e.target.id === "switchLink") {
-                e.preventDefault();
-                setFormMode(!isLogin);
+        function attachSwitchLink() {
+            const switchLink = document.getElementById("switchLink");
+            if (switchLink) {
+                switchLink.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    setFormMode(!isLogin);
+                });
             }
-        });
-
-        const params = new URLSearchParams(window.location.search);
-        setFormMode(!params.has("register") ? true : false);
-
-
-        function getUsers() {
-            return JSON.parse(localStorage.getItem("users")) || [];
         }
 
-        function saveUsers(users) {
-            localStorage.setItem("users", JSON.stringify(users));
-        }
+        attachSwitchLink();
+        setFormMode(true);
 
-        form.addEventListener("submit", (e) => {
+        form.addEventListener("submit", async (e) => {
             e.preventDefault();
-            const email = emailInput.value.trim();
-            const password = passwordInput.value.trim();
-            let users = getUsers();
-            const passwordConfirm = passwordConfirmInput.value.trim();
+            const emailValue = emailInput.value.trim();
+            const passwordValue = passwordInput.value.trim();
+            const passwordConfirmValue = passwordConfirmInput.value.trim();
+
+            if (!emailValue || !passwordValue || (!isLogin && !passwordConfirmValue)) {
+                alert("⚠️ Заполните все поля");
+                return;
+            }
+
+            if (!isLogin && passwordValue !== passwordConfirmValue) {
+                alert("⚠️ Пароли не совпадают");
+                return;
+            }
 
             if (isLogin) {
-                const user = users.find(u => u.email === email && u.password === password);
-                if (user) {
-                    alert("✅ Login successful!");
-                    window.location.href = "index.html";
-                } else {
-                    alert("❌ Incorrect email or password!");
+                try {
+                    let response = await fetch("http://92.255.79.122:9998/api/v1/auth/login", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            login_or_email: emailValue,
+                            password: passwordValue,
+                        }),
+                    });
+
+                    let result = await response.json();
+                    console.log(result);
+
+                    if (response.ok) {
+                        alert("✅ Login successful!");
+                        localStorage.setItem("access_token", result.access_token);
+                        window.location.href = "index.html";
+                    } else {
+                        alert("❌ " + (result.message || "Ошибка авторизации"));
+                    }
+                } catch (error) {
+                    console.error(error);
+                    alert("❌ Ошибка соединения с сервером");
                 }
             } else {
-                const exists = users.some(u => u.email === email);
-                if (exists) {
-                    alert("⚠️ User with this email already exists!");
-                    return;
-                }
+                try {
+                    let response = await fetch("http://92.255.79.122:9998/api/v1/auth/register", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            login: emailValue.split("@")[0],
+                            email: emailValue,
+                            password: passwordValue,
+                        }),
+                    });
 
-                if(!passwordConfirm){
-                    alert("⚠️ Please confirm your password!")
-                    return;
-                }
+                    let result = await response.json();
+                    console.log(result);
 
-                if(password !== passwordConfirm){
-                    alert("Passwords don't match!");
-                    return;
-                } else {
-                    users.push({ email, password });
-                    saveUsers(users);
-                    alert("🎉 Registration successful! Now you can log in.");
-                    setFormMode(true);
+                    if (response.ok) {
+                        alert("🎉 Registration successful! Now you can log in.");
+                        setFormMode(true);
+                    } else {
+                        alert("❌ " + (result.message || "Ошибка регистрации"));
+                    }
+                } catch (error) {
+                    console.error(error);
+                    alert("❌ Ошибка соединения с сервером");
                 }
             }
         });
+
         const modal = document.getElementById("authModal");
         const closeBtn = document.querySelector(".close-btn");
         const cancelBtn = document.querySelector(".btn-cancel");
@@ -240,7 +261,7 @@
         document.querySelectorAll(".menu__link").forEach(link => {
             if (link.textContent.trim() === "Вход") {
                 link.addEventListener("click", (e) => {
-                    e.preventDefault(); // не переходить на другую страницу
+                    e.preventDefault();
                     modal.style.display = "flex";
                 });
             }
@@ -253,33 +274,6 @@
             if (e.target === modal) {
                 modal.style.display = "none";
             }
-        });
-        register.addEventListener("click", async (e) => {
-            e.preventDefault();
-            let emailValue = email.value;
-            let loginValue = login.value;
-            let passwordValue = password.value;
-            let passwordConfirmValue = passwordConfirm.value;
-            if (emailValue.loginValue == 0 || loginValue == 0 || passwordValue == 0 || passwordConfirmValue == 0) {
-                alert("Заполните все поля");
-            }
-            if (passwordValue != passwordConfirmValue) {
-                alert("Пароли не совпадают");
-            }
-            let data = {
-                login: loginValue,
-                email: emailValue,
-                password: passwordValue,
-            };
-            let response = await fetch("http://92.255.79.122:9998/api/v1/auth/register", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            });
-            let result = await response.json();
-            console.log(result);
         });
     </script>
 </body>
