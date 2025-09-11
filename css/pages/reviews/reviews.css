@@ -1,0 +1,122 @@
+.reviews {
+    padding: 60px 20px;
+    background: #f9fafb;
+  }
+  
+  .reviews__container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .reviews__title {
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .reviews__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+  }
+  
+  .review {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  
+  .review:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  }
+  
+  .review--top {
+    border: 1px solid rgba(14, 165, 164, 0.3);
+  }
+  
+  .review__head {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  
+  .review__avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+  
+  .review__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 14px;
+  }
+  
+  .review__name {
+    font-weight: 600;
+    font-size: 15px;
+  }
+  
+  .review__city {
+    color: #6b7280;
+    font-size: 13px;
+  }
+  
+  .review__time {
+    color: #9ca3af;
+    font-size: 12px;
+  }
+  
+  .review__rating {
+    color: #f59e0b;
+    font-size: 14px;
+  }
+  
+  .review__text {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .review__tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  
+  .review__tag {
+    background: #f1fbfa;
+    color: #0ea5a4;
+    font-size: 12px;
+    border-radius: 20px;
+    padding: 5px 10px;
+  }
+  
+  .review__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #6b7280;
+  }
+  
+  .review__like {
+    border: none;
+    background: #f4f7f9;
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background .2s;
+  }
+  
+  .review__like:hover {
+    background: #e5e7eb;
+  }

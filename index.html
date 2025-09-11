@@ -72,7 +72,104 @@
                 </div>
             </section>
         </main>
+        <section class="reviews">
+            <div class="reviews__container">
+                <h2 class="reviews__title">Отзывы клиентов</h2>
+                <div class="reviews__grid">
+                    
+                    <article class="review review--top">
+                        <div class="review__head">
+                            <img src="images/reviews/woman.jpg" alt="Анастасия" class="review__avatar">
+                            <div class="review__meta">
+                                <span class="review__name">Анастасия П.</span>
+                                <span class="review__city">Москва · уборка после ремонта</span>
+                                <span class="review__time">2 дня назад</span>
+                                <span class="review__rating">★★★★★</span>
+                            </div>
+                        </div>
+                        <p class="review__text">
+                            Приехали вовремя, вывезли мусор, помыли окна — квартира как новая.  
+                            Особенно порадовал результат на кухне. Рекомендую!
+                        </p>
+                        <div class="review__tags">
+                            <span class="review__tag">Генеральная уборка</span>
+                            <span class="review__tag">Окна</span>
+                        </div>
+                        <div class="review__footer">
+                            <span class="review__verified">✔ Подтвержденный заказ</span>
+                            <button class="review__like">👍 24</button>
+                        </div>
+                    </article>
+        
+                    <article class="review">
+                        <div class="review__head">
+                            <img src="images/reviews/men.jpeg" alt="Игорь" class="review__avatar">
+                            <div class="review__meta">
+                                <span class="review__name">Игорь М.</span>
+                                <span class="review__city">СПб · химчистка дивана</span>
+                                <span class="review__time">1 неделя назад</span>
+                                <span class="review__rating">★★★★★</span>
+                            </div>
+                        </div>
+                        <p class="review__text">
+                            Заказывал чистку дивана — добросовестно, без запаха,  
+                            пятна от вина почти полностью ушли. Цена адекватная.
+                        </p>
+                        <div class="review__tags">
+                            <span class="review__tag">Химчистка</span>
+                        </div>
+                        <div class="review__footer">
+                            <span class="review__verified">Оплачено онлайн</span>
+                            <button class="review__like">👍 7</button>
+                        </div>
+                    </article>
+        
+                    <article class="review">
+                        <div class="review__head">
+                            <img src="images/reviews/women2.jpeg" alt="Мария" class="review__avatar">
+                            <div class="review__meta">
+                                <span class="review__name">Мария И.</span>
+                                <span class="review__city">Казань · поддерживающая уборка</span>
+                                <span class="review__time">3 недели назад</span>
+                                <span class="review__rating">★★★★★</span>
+                            </div>
+                        </div>
+                        <p class="review__text">
+                            Пользуюсь услугами компании уже второй месяц — очень удобно!  
+                            Всегда приезжают в одно и то же время, уборка аккуратная,  
+                            в квартире приятно находиться.
+                        </p>
+                        <div class="review__tags">
+                            <span class="review__tag">Регулярная уборка</span>
+                            <span class="review__tag">Кухня</span>
+                        </div>
+                        <div class="review__footer">
+                            <span class="review__verified">✔ Подтвержденный заказ</span>
+                            <button class="review__like">👍 15</button>
+                        </div>
+                    </article>
+        
+                </div>
+            </div>
+        </section>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+              const likeButtons = document.querySelectorAll(".review__like");
+            
+              likeButtons.forEach(function(button) {
+                button.addEventListener("click", function() {
 
+                  let current = button.textContent.trim();
+
+                  let parts = current.split(" ");
+                  let likes = parseInt(parts[1]) || 0;
+
+                  likes++;
+                  button.textContent = "👍 " + likes;
+                });
+              });
+            });
+            </script>
         <footer class="footer">
             <div class="footer__container">
                 <section id="contact">
@@ -276,5 +373,6 @@
             }
         });
     </script>
+
 </body>
 </html>
